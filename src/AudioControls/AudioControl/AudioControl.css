@@ -5,3 +5,7 @@
 .btn {
   margin: 20px;
 }
+
+.box {
+  display: inline-block;
+}

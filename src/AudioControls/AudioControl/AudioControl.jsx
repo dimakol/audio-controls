@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import "./AudioControl.css";
 
 const AudioControl = (props) => {
@@ -6,6 +8,9 @@ const AudioControl = (props) => {
   const [value, setValue] = useState(props.value);
   const [isVolumeAndGreaterThan90, setIsVolumeAndGreaterThan90] =
     useState(false);
+
+  const downIcon = <FontAwesomeIcon icon={faCaretDown} />;
+  const upIcon = <FontAwesomeIcon icon={faCaretUp} />;
 
   useEffect(() => {
     if (label === "volume" && value > 90) {
@@ -26,15 +31,20 @@ const AudioControl = (props) => {
 
   return (
     <div className="audio-control">
+      <div className="arrows-container">
+        {upIcon}
+        {downIcon}
+      </div>
       <button className="btn" type="button" onClick={decreaseValue}>
         -
       </button>
-      <p
-        className="box"
+      <div
+        className="value-label-container"
         style={{ color: `${isVolumeAndGreaterThan90 ? "red" : "black"}` }}
       >
-        {value} {label.toUpperCase()}
-      </p>
+        <div className="value">{value}</div>
+        <div className="label">{label.toUpperCase()}</div>
+      </div>
       <button className="btn" type="button" onClick={increaseValue}>
         +
       </button>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AudioControl from "./AudioControl/AudioControl";
+import "./AudioControls.css";
 
 const controls = {
   volume: "volume",
@@ -28,7 +29,7 @@ const AudioControls = () => {
     setControlsList(controlsList);
   }, []);
 
-  return <div>{controlsList}</div>;
+  return <div className="audio-controls">{controlsList}</div>;
 };
 
 export default AudioControls;

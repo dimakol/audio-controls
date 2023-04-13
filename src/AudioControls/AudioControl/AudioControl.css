@@ -1,11 +1,19 @@
 .audio-control {
-  margin: 10px;
-}
-
-.btn {
+  display: flex;
   margin: 20px;
 }
 
-.box {
-  display: inline-block;
+.arrows-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin: 0 20px;
+  height: 30px;
+  width: 30px;
+}
+
+.value-label-container {
+  width: 100px;
 }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import AudioControl from "./AudioControl/AudioControl";
 import "./AudioControls.css";
 
@@ -12,6 +14,48 @@ const controls = {
 const AudioControls = () => {
   const [controlsList, setControlsList] = useState([]);
   const [controlNameInput, setControlNameInput] = useState("");
+
+  const moveItemDown = (index) => {
+    let firstItems, lastItems, updatedControlsList;
+    const currentItem = controlsList[index];
+    const nextItem = controlsList[index + 1];
+    // first item selected to move down
+    if (index === 0) {
+      lastItems = controlsList.slice(index + 2);
+      updatedControlsList = [nextItem, currentItem, ...lastItems];
+    } else {
+      firstItems = controlsList.slice(0, index);
+      lastItems = controlsList.slice(index + 2);
+      updatedControlsList = [
+        ...firstItems,
+        nextItem,
+        currentItem,
+        ...lastItems,
+      ];
+    }
+    setControlsList(updatedControlsList);
+  };
+
+  const moveItemUp = (index) => {
+    let firstItems, lastItems, updatedControlsList;
+    const currentItem = controlsList[index];
+    const previousItem = controlsList[index - 1];
+    // last item selected to move up
+    if (index === controlsList.length - 1) {
+      firstItems = controlsList.slice(0, index - 1);
+      updatedControlsList = [...firstItems, currentItem, previousItem];
+    } else {
+      firstItems = controlsList.slice(0, index - 1);
+      lastItems = controlsList.slice(index + 1);
+      updatedControlsList = [
+        ...firstItems,
+        currentItem,
+        previousItem,
+        ...lastItems,
+      ];
+    }
+    setControlsList(updatedControlsList);
+  };
 
   useEffect(() => {
     const volume = (
@@ -73,9 +117,38 @@ const AudioControls = () => {
     setControlNameInput("");
   };
 
+  /**
+   *
+   * @param {number} itemIndex
+   * @returns arrows of the item for moving it up and down
+   */
+  const renderArrows = (itemIndex) => (
+    <>
+      {itemIndex !== 0 && (
+        <FontAwesomeIcon
+          className={"pointer-cursor"}
+          icon={faCaretUp}
+          onClick={() => moveItemUp(itemIndex)}
+        />
+      )}
+      {itemIndex !== controlsList.length - 1 && (
+        <FontAwesomeIcon
+          className={"pointer-cursor"}
+          icon={faCaretDown}
+          onClick={() => moveItemDown(itemIndex)}
+        />
+      )}
+    </>
+  );
+
   return (
     <div className="audio-controls">
-      {controlsList}
+      {controlsList.map((item, index) => (
+        <div key={item.key} className="control">
+          <div className="arrows-container">{renderArrows(index)}</div>
+          {item}
+        </div>
+      ))}
       <div className="new-control-container">
         <input
           type="text"
@@ -84,7 +157,7 @@ const AudioControls = () => {
           value={controlNameInput}
           onChange={handleInputChange}
         />
-        <button className="add-button" onClick={onSubmit}>
+        <button className="add-button pointer-cursor" onClick={onSubmit}>
           Add
         </button>
       </div>

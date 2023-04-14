@@ -3,6 +3,20 @@
   width: fit-content;
 }
 
+.control {
+  display: flex;
+}
+
+.arrows-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto auto 35px;
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
+
 .new-control-container {
   margin: 50px 0;
 }
@@ -10,12 +24,13 @@
 .control-name-input {
   border-color: black;
   padding: 10px;
+  width: 200px;
 }
 
 .add-button {
   display: block;
   margin: 20px auto;
-  width: 185px;
+  width: 215px;
   padding: 7px;
   background-color: black;
   color: white;

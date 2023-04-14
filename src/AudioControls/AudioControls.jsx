@@ -100,7 +100,8 @@ const AudioControls = () => {
    * On submit, a new control should be added to the end of the controls list,
    * with the filled name and the value of zero.
    */
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     const newControl = (
       <AudioControl
         key={`${controlNameInput}_${controlsList.length + 1}`}
@@ -149,18 +150,20 @@ const AudioControls = () => {
           {item}
         </div>
       ))}
-      <div className="new-control-container">
+
+      <form className="new-control-form" onSubmit={onSubmit}>
         <input
           type="text"
           className="control-name-input"
           placeholder="Enter Control Name..."
           value={controlNameInput}
           onChange={handleInputChange}
+          required
         />
-        <button className="add-button pointer-cursor" onClick={onSubmit}>
+        <button className="add-button pointer-cursor" type="submit">
           Add
         </button>
-      </div>
+      </form>
     </div>
   );
 };

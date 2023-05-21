@@ -26,9 +26,21 @@ The app should look like this:
 
 **Running in development environment**
 
+git, npm and node softwares should be installed before moving on
+
+- git clone https://github.com/dimakol/react-audio-controls-app.git
+- cd react-audio-controls-app/
 - npm install
 - npm run dev
 
 **Building**
 
 - npm run build
+
+## Deployed to Github pages
+
+https://dimakol.github.io/react-audio-controls-app/
+
+## License
+
+MIT © Dima Kolyas

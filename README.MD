@@ -1,6 +1,4 @@
-# Task description
-
-## Audio Controls App
+# Audio Controls App
 
 ## Requirements
 
@@ -24,18 +22,22 @@ The app should look like this:
 
 ## Installation
 
-**Running in development environment**
+**Running Locally**
 
 git, npm and node softwares should be installed before moving on
 
-- git clone https://github.com/dimakol/react-audio-controls-app.git
-- cd react-audio-controls-app/
-- npm install
-- npm run dev
+```bash
+git clone https://github.com/dimakol/react-audio-controls-app.git
+cd react-audio-controls-app
+npm install
+npm run dev
+```
 
-**Building**
+**Building for production**
 
-- npm run build
+```bash
+npm run build
+```
 
 ## Deployed to Github pages
 
@@ -43,4 +45,6 @@ https://dimakol.github.io/react-audio-controls-app/
 
 ## License
 
-MIT © Dima Kolyas
+(The MIT License)
+
+Copyright © 2023 Dima Kolyas
